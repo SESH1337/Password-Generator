@@ -122,6 +122,19 @@ body {
   font-family: "Times New Roman", Times, serif;
 }
 
+.copied__button {
+  cursor: pointer;
+  display: flex;
+  padding: 0.8rem 1.5rem;
+  border-radius: 15px;
+  align-items: center;
+  background-color: rgb(16, 202, 248);
+  font-weight: bolder;
+  border: none;
+  font-size: 1.5rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
 .copy__button__img {
   margin: 0 5px;
 }
