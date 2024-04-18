@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react"; // Import useEffect from react
+
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -13,16 +14,18 @@ function App() {
   let defaultValue = 7;
   const [sliderValue, setSliderValue] = useState(defaultValue);
   const [password, setPassword] = useState("");
+  const [checkbox, setCheckbox] = useState("");
 
   const generatePassword = () => {
+    console.log(checkbox);
     const length = sliderValue;
-    const charset =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|:;"<>,.?/~';
+    // const charset =
+    //   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|:;"<>,.?/~';
 
     let generatedPassword = "";
     for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * charset.length);
-      generatedPassword += charset[randomIndex];
+      const randomIndex = Math.floor(Math.random() * checkbox.length);
+      generatedPassword += checkbox[randomIndex];
     }
     setPassword(generatedPassword);
     return generatePassword;
@@ -44,7 +47,10 @@ function App() {
         sliderValue={sliderValue}
         setSliderValue={setSliderValue}
       />
-      <CheckboxGroup generatePassword={generatePassword} />
+      <CheckboxGroup
+        generatePassword={generatePassword} // Pass the generatePassword function
+        setCheckbox={setCheckbox}
+      />
     </div>
   );
 }

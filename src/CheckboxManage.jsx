@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const CheckboxManage = ({ items, generatePassword, setCheckbox }) => {
-  const [checkboxes, setCheckboxes] = useState({});
+  const [checkboxes, setCheckboxes] = useState({
+    // Initialize the checkboxes state with specific items checked by default
+    uppercase: true, // Set "uppercase" to initially checked
+    numbers: true, // Set "numbers" to initially checked
+    lowercase: false, // Set others to initially unchecked
+    special: false,
+  });
 
   const handleCheckboxChange = (itemId) => {
     // Toggle the checkbox state
@@ -9,33 +15,37 @@ export const CheckboxManage = ({ items, generatePassword, setCheckbox }) => {
       ...prevCheckboxes,
       [itemId]: !prevCheckboxes[itemId], // Toggle the checkbox state
     }));
-
-    // Perform actions based on which checkbox is toggled
-    switch (itemId) {
-      case "uppercase":
-        if (!checkboxes[itemId]) {
-          setCheckbox("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        }
-        break;
-      case "lowercase":
-        if (!checkboxes[itemId]) {
-          setCheckbox("abcdefghijklmnopqrstuvwxyz");
-        }
-        break;
-      case "numbers":
-        if (!checkboxes[itemId]) {
-          setCheckbox("0123456789");
-        }
-        break;
-      case "special":
-        if (!checkboxes[itemId]) {
-          setCheckbox("!@#$%^&*()_+{}[]|:;''<>,.?/~");
-        }
-        break;
-      default:
-        break;
-    }
   };
+
+  useEffect(() => {
+    // Define variables to build the character set for the password
+    let charSet = "";
+
+    // Iterate through checkboxes to build the character set based on selected options
+    items.forEach((item) => {
+      if (checkboxes[item.id]) {
+        switch (item.id) {
+          case "uppercase":
+            charSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            break;
+          case "lowercase":
+            charSet += "abcdefghijklmnopqrstuvwxyz";
+            break;
+          case "numbers":
+            charSet += "0123456789";
+            break;
+          case "special":
+            charSet += "!@#$%^&*()_+{}[]|:;''<>,.?/~";
+            break;
+          default:
+            break;
+        }
+      }
+    });
+
+    // Call setCheckbox to update the password generation with the new character set
+    setCheckbox(charSet);
+  }, [checkboxes, items, setCheckbox]);
 
   return (
     <div>

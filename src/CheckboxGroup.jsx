@@ -1,6 +1,6 @@
 import { CheckboxManage } from "./CheckboxManage";
 
-export const CheckboxGroup = (generatePassword, setCheckbox) => {
+export const CheckboxGroup = ({ generatePassword, setCheckbox }) => {
   // Define checkbox categories
   const checkboxItems = [
     { id: "uppercase", label: "Uppercase" },
@@ -13,6 +13,7 @@ export const CheckboxGroup = (generatePassword, setCheckbox) => {
     <div>
       <CheckboxManage
         items={checkboxItems}
+        setCheckbox={setCheckbox}
         generatePassword={generatePassword}
       />
     </div>

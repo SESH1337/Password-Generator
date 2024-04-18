@@ -10,6 +10,8 @@ export function ResetPassword({ restartImageSrc, password, generatePassword }) {
     generatePassword();
   };
 
+  console.log(password); // This logs the current password whenever it changes
+
   return (
     <>
       <input
