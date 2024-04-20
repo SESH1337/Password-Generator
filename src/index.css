@@ -138,10 +138,21 @@ body {
 .copy__button__img {
   margin: 0 5px;
 }
-.solid__password {
+.weak__password {
   font-size: 1.75rem;
   margin: 5px 5px;
   color: rgba(184, 69, 69, 0.644);
+}
+
+.medium__password {
+  font-size: 1.75rem;
+  margin: 5px 5px;
+  color: rgb(241, 161, 56);
+}
+.solid__password {
+  font-size: 1.75rem;
+  margin: 5px 5px;
+  color: rgb(69, 184, 84);
 }
 
 /* Solid Password */

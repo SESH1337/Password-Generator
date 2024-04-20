@@ -9,6 +9,9 @@ export const CheckboxManage = ({ items, generatePassword, setCheckbox }) => {
     special: false,
   });
 
+  // Call generatePassword function once on component mount to retrieve password
+  // Empty dependency array ensures this effect runs only once on mount
+
   const handleCheckboxChange = (itemId) => {
     // Toggle the checkbox state
     setCheckboxes((prevCheckboxes) => ({

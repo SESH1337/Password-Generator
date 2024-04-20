@@ -17,11 +17,9 @@ function App() {
   const [checkbox, setCheckbox] = useState("");
 
   const generatePassword = () => {
-    console.log(checkbox);
     const length = sliderValue;
-    // const charset =
-    //   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|:;"<>,.?/~';
-
+    const charset =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|:;"<>,.?/~';
     let generatedPassword = "";
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * checkbox.length);
@@ -40,7 +38,7 @@ function App() {
         setPassword={setPassword}
         generatePassword={generatePassword}
       />
-      <SolidPassword />
+      <SolidPassword password={password} />
       <PasswordLength
         minLength={7}
         maxLength={30}
